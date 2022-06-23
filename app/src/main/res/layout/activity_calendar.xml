@@ -24,6 +24,19 @@
         android:layout_centerInParent="true"
         android:background="@drawable/calendar_bg" />
 
+
+    <EditText
+        android:id="@+id/mailTo"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="35dp"
+        android:gravity="center"
+        android:hint="@string/enter_email_id"
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/notify_date"
         android:layout_width="wrap_content"

@@ -3,4 +3,5 @@
     <string name="view_calendar"><![CDATA[view calendar ->]]></string>
     <string name="your_date">Your date:</string>
     <string name="notify_the_date">Notify the date</string>
+    <string name="enter_email_id">Enter email id</string>
 </resources>

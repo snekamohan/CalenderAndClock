@@ -7,28 +7,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.calenderandclock.databinding.ActivityMainBinding;
 
 public class CalendarActivity extends AppCompatActivity {
     TextView myDate;
+    EditText email;
     CalendarView calendarView;
     String date;
     Button notify;
+
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         notify = (Button) findViewById(R.id.notify_date);
+        email = (EditText) findViewById(R.id.mailTo);
+
         notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,5 +81,15 @@ public class CalendarActivity extends AppCompatActivity {
         builder.setContentIntent(pendingIntent);
         NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
         m.notify(1,builder.build());
+        String recipientList = email.getText().toString();
+        String subject = "Reminder";
+        String message = "You have set reminder on "+ date;
+        Intent intent1 = new Intent(Intent.ACTION_SENDTO);
+        intent1.setData(Uri.parse("mailto:"));
+        intent1.putExtra(Intent.EXTRA_EMAIL, recipientList);
+        intent1.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent1.putExtra(Intent.EXTRA_TEXT, message);
+//        intent1.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent1, "Choose an email client"));
     }
 }
