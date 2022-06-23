@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <AnalogClock
+        android:id="@+id/analogClock"
+        android:layout_width="180dp"
+        android:layout_height="190dp"
+        android:layout_above="@+id/digitalClock"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/analog_bg" />
+
+
+    <DigitalClock
+        android:id="@+id/digitalClock"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/digital_bg"
+        android:gravity="center"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/buttonWrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/viewCalenderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/btn_bg"
+            android:text="@string/view_calendar" />
+    </LinearLayout>
+
+</RelativeLayout>
