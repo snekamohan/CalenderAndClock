@@ -26,7 +26,7 @@ import com.example.calenderandclock.databinding.ActivityMainBinding;
 
 public class CalendarActivity extends AppCompatActivity {
     TextView myDate;
-    EditText email;
+    EditText email,email_msg;
     CalendarView calendarView;
     String date;
     Button notify;
@@ -36,6 +36,7 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         notify = (Button) findViewById(R.id.notify_date);
         email = (EditText) findViewById(R.id.mailTo);
+        email_msg = (EditText) findViewById(R.id.email_msg);
 
         notify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,9 +81,10 @@ public class CalendarActivity extends AppCompatActivity {
         NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
         m.notify(1,builder.build());
         String recipientList = email.getText().toString();
+        String email_txt = email_msg.getText().toString();
         String[] recipients = recipientList.split(",");
         String subject = "Reminder";
-        String message = "You have set reminder on "+ date;
+        String message = "You have set reminder on "+ date + " for "+email_txt;
         Intent intent1 = new Intent(Intent.ACTION_SENDTO);
         intent1.setData(Uri.parse("mailto:"));
         intent1.putExtra(Intent.EXTRA_EMAIL, recipients);
