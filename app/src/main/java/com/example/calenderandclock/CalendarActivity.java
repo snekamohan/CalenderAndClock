@@ -30,8 +30,6 @@ public class CalendarActivity extends AppCompatActivity {
     CalendarView calendarView;
     String date;
     Button notify;
-
-    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,11 +80,12 @@ public class CalendarActivity extends AppCompatActivity {
         NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
         m.notify(1,builder.build());
         String recipientList = email.getText().toString();
+        String[] recipients = recipientList.split(",");
         String subject = "Reminder";
         String message = "You have set reminder on "+ date;
         Intent intent1 = new Intent(Intent.ACTION_SENDTO);
         intent1.setData(Uri.parse("mailto:"));
-        intent1.putExtra(Intent.EXTRA_EMAIL, recipientList);
+        intent1.putExtra(Intent.EXTRA_EMAIL, recipients);
         intent1.putExtra(Intent.EXTRA_SUBJECT, subject);
         intent1.putExtra(Intent.EXTRA_TEXT, message);
 //        intent1.setType("message/rfc822");
