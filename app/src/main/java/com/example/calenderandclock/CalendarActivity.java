@@ -2,12 +2,10 @@ package com.example.calenderandclock;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -21,8 +19,6 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.example.calenderandclock.databinding.ActivityMainBinding;
 
 public class CalendarActivity extends AppCompatActivity {
     TextView myDate;
